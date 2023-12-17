@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en" layout:decorate="~{layouts/main}" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+</head>
+<body>
+<div layout:fragment="content">
+
+    <!-- Contact-->
+    <section class="contact-section bg-info">
+
+        <div class="container px-4 px-lg-5">
+
+            <div class="col-md-8 mx-auto m-5">
+                <h2>Carica Immagini</h2>
+                <p th:text="${message}" th:if="${message ne null}" class="alert alert-primary"></p>
+                <div class="row">
+                    <div class="col-5" style="width: 700px; height: 400px; overflow-y: scroll;">
+                        <ul class="list-group">
+                            <li class="list-group-item" th:each="s : ${files}">
+                                <div class="row">
+                                    <div class="col-8">
+                                        <p th:text="${s}"></p>
+                                    </div>
+                                    <div class="col-4">
+                                        <button th:onclick="deleteImage('[(${s})]')"
+                                                class="btn btn-danger">Cancella</button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <form method="post" th:action="@{/page/upload-images}" enctype="multipart/form-data">
+                    <div class="form-group m-2">
+                        <h4>Image1</h4>
+                        <input type="file" name="image" accept="image/png, image/jpeg" class="form-control-file" required>
+                    </div>
+                    <div class="form-group m-2">
+                        <h4>Image2</h4>
+                        <input type="file" name="image" accept="image/png, image/jpeg" class="form-control-file">
+                    </div>
+                    <!--<div class="form-group m-2">
+                        <h4>Image3</h4>
+                        <input type="file" name="image" accept="image/png, image/jpeg" class="form-control-file" required>
+                    </div>
+                    <div class="form-group m-2">
+                        <h4>Image4</h4>
+                        <input type="file" name="image" accept="image/png, image/jpeg" class="form-control-file" required>
+                    </div>
+                    <div class="form-group m-2">
+                        <h4>Image5</h4>
+                        <input type="file" name="image" accept="image/png, image/jpeg" class="form-control-file" required>
+                    </div>-->
+
+                    <button type="submit" class="btn btn-primary mt-5">Upload all</button>
+                </form>
+                <span th:if="${msg != null}" th:text="${msg}"></span>
+            </div>
+
+        </div>
+    </section>
+
+    <script th:inline="javascript">
+
+ async function postData(url = "", data = {}) {
+              // Default options are marked with *
+              const response = await fetch(url, {
+                method: "POST",
+                mode: "cors",
+                cache: "no-cache",
+                credentials: "same-origin",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                redirect: "follow",
+                referrerPolicy: "no-referrer",
+                body: JSON.stringify(data),
+              });
+              return response.json();
+            }
+
+     function deleteImage(name){
+               postData("/page/delete-image", { image: name }).then((data) => {
+              console.log(data);
+              location.reload();
+            });
+        }
+    </script>
+</div>
+</body>
+</html>

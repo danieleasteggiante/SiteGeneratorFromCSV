@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en" layout:decorate="~{layouts/main}" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+</head>
+<body>
+<div layout:fragment="content">
+    <section class="about-section text-center " id="about">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-lg-8">
+                    <h2 class="mb-4">Blog</h2>
+                    <div class="row mb-2">
+                        <div class="col-md-5 m-3" th:each="p:${posts}">
+                            <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                                <div class="col p-4 d-flex flex-column position-static">
+                                    <h3 class="mb-0" th:text="${p.getTitle()}"></h3>
+                                    <div class="mb-1 text-muted" th:text="${p.getDate()}"></div>
+                                    <p class="card-text mb-auto">[(${#strings.abbreviate(p.getContent(),30)})]</p>
+                                    <a th:href="@{blog/} + ${p.getLink()}" class="stretched-link">Continua</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+    </section>
+
+</div>
+</body>
+</html>

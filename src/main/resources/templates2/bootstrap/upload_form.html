@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en" layout:decorate="~{layouts/main}" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+</head>
+<body>
+<div layout:fragment="content">
+
+    <!-- Contact-->
+    <section class="contact-section bg-info">
+        <div class="container px-4 px-lg-5">
+
+            <div class="col-md-8 mx-auto m-5">
+                <h2>Carica file CSV</h2>
+                <p th:text="${message}" th:if="${message ne null}" class="alert alert-primary"></p>
+                <form method="post" th:action="@{/page/upload}" enctype="multipart/form-data">
+                    <div class="form-group m-2">
+                        <h4>Users file</h4>
+                        <input type="file" name="person" accept=".csv" class="form-control-file">
+                    </div>
+                    <div class="form-group m-2">
+                        <h4>Pages file</h4>
+                        <input type="file" name="page" accept=".csv" class="form-control-file">
+                    </div>
+                    <div class="form-group m-2">
+                        <h4>Home file</h4>
+                        <input type="file" name="home" accept=".csv" class="form-control-file">
+                    </div>
+                    <div class="form-group m-2">
+                        <h4>Blog file</h4>
+                        <input type="file" name="blog" accept=".csv" class="form-control-file">
+                    </div>
+                    <div class="form-group m-5">
+                        <h3>Contacts info</h3>
+
+                        <input type="text" name="address" placeholder="address">
+                        <input type="text" name="email" placeholder="email">
+                        <input type="text" name="phone" placeholder="phone">
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-5">Upload all</button>
+                </form>
+                <span th:if="${msg != null}" th:text="${msg}"></span>
+            </div>
+
+        </div>
+    </section>
+</div>
+</body>
+</html>

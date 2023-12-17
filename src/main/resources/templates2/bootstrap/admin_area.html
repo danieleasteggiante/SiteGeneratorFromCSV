@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" layout:decorate="~{layouts/main}" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+</head>
+<body>
+<div layout:fragment="content">
+
+    <section class="about-section text-center" id="about">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-lg-8">
+                    <h2 class="mb-4">Area amministratore</h2>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-12 mb-3">
+                            <a href="/page/upload-csv" class="btn btn-primary">Carica contenuti</a>
+                        </div>
+                        <div class="col-lg-4 col-md-12 mb-3">
+                            <a href="/page/upload-images-form" class="btn btn-primary">Carica immagini</a>
+                        </div>
+                        <div class="col-lg-4 col-md-12 mb-3" onclick="deletePost(event)">
+                            <input type="text" class="mb-1" placeholder="link" id="deletePostLink" />
+                            <button class="btn btn-primary mb-1">Elimina post</button>
+                            <p style="font-size:60%">Inserisci il link relativo al post da eliminare, solo l'ultima parte <br>
+                            Es.nell'indirizzo http://sito.it/blog/link la parte da inserire sarebbe la parola <strong>link</strong></p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script th:inline="javascript">
+function deletePost(event) {
+if(deletePostLink.value.trim().length > 0){
+fetch("/page/delete-post/" + deletePostLink.value)
+  .then((response) => console.log(response))}
+}
+
+</script>
+    </section>
+
+
+</div>
+
+</body>
+</html>

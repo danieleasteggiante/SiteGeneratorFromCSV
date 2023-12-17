@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet  id="create table person"  author="daniele">
+        <createTable  tableName="person">
+            <column  name="id"  type="int"  autoIncrement="true">
+                <constraints  primaryKey="true"  nullable="false"/>
+            </column>
+            <column  name="firstname"  type="varchar(50)"/>
+            <column  name="lastname"  type="varchar(50)"/>
+            <column  name="username"  type="varchar(50)"/>
+            <column  name="password"  type="varchar(50)"/>
+            <column  name="role"  type="varchar(50)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet  id="create page table"  author="daniele">
+        <createTable  tableName="page">
+            <column  name="id"  type="int"  autoIncrement="true">
+                <constraints  primaryKey="true"  nullable="false"/>
+            </column>
+            <column  name="name"  type="varchar(50)"/>
+            <column  name="link"  type="varchar(50)"/>
+            <column  name="content"  type="clob"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet  id="create page home"  author="daniele">
+        <createTable  tableName="home">
+            <column  name="id"  type="int"  autoIncrement="true">
+                <constraints  primaryKey="true"  nullable="false"/>
+            </column>
+            <column  name="sectionname"  type="varchar(50)"/>
+            <column  name="sectioncontent"  type="clob"/>
+            <column  name="visible"  type="boolean"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet  id="create page style"  author="daniele">
+        <createTable  tableName="style">
+            <column  name="id"  type="int"  autoIncrement="true">
+                <constraints  primaryKey="true"  nullable="false"/>
+            </column>
+            <column  name="stilename"  type="varchar(50)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet  id="create page images"  author="daniele">
+        <createTable  tableName="images">
+            <column  name="id"  type="int"  autoIncrement="true">
+                <constraints  primaryKey="true"  nullable="false"/>
+            </column>
+            <column  name="imagename"  type="varchar(50)"/>
+            <column  name="imagepath"  type="varchar(50)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet  id="create page contact"  author="daniele">
+        <createTable  tableName="contact">
+            <column  name="id"  type="int"  autoIncrement="true">
+                <constraints  primaryKey="true"  nullable="false"/>
+            </column>
+            <column  name="address"  type="varchar(50)"/>
+            <column  name="email"  type="varchar(50)"/>
+            <column  name="telephone"  type="varchar(50)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet  id="drop table person"  author="daniele">
+        <dropTable cascadeConstraints="true"
+                   tableName="person"/>
+    </changeSet>
+
+    <changeSet  id="create table person v2"  author="daniele">
+        <createTable  tableName="person">
+            <column  name="id"  type="int"  autoIncrement="true">
+                <constraints  primaryKey="true"  nullable="false"/>
+            </column>
+            <column  name="firstname"  type="varchar(50)"/>
+            <column  name="lastname"  type="varchar(50)"/>
+            <column  name="title"  type="varchar(50)"/>
+            <column  name="cv"  type="varchar(50)"/>
+            <column  name="photo"  type="varchar(150)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet  id="create page contact"  author="daniele">
+        <createTable  tableName="contact">
+            <column  name="id"  type="int"  autoIncrement="true">
+                <constraints  primaryKey="true"  nullable="false"/>
+            </column>
+            <column  name="address"  type="varchar(50)"/>
+            <column  name="email"  type="varchar(50)"/>
+            <column  name="telephone"  type="varchar(50)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet  id="drop table person2"  author="daniele">
+        <dropTable cascadeConstraints="true"
+                   tableName="person"/>
+    </changeSet>
+
+    <changeSet  id="create table person v3"  author="daniele">
+        <createTable  tableName="person">
+            <column  name="id"  type="int"  autoIncrement="true">
+                <constraints  primaryKey="true"  nullable="false"/>
+            </column>
+            <column  name="firstname"  type="varchar(50)"/>
+            <column  name="lastname"  type="varchar(50)"/>
+            <column  name="title"  type="varchar(50)"/>
+            <column  name="cv"  type="clob"/>
+            <column  name="photo"  type="varchar(150)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet  id="drop table contact"  author="daniele">
+        <dropTable cascadeConstraints="true"
+                   tableName="contact"/>
+    </changeSet>
+
+    <changeSet  id="create table contact v2"  author="daniele">
+        <createTable  tableName="contact">
+            <column  name="id"  type="int"  autoIncrement="true">
+                <constraints  primaryKey="true"  nullable="false"/>
+            </column>
+            <column  name="address"  type="varchar(300)"/>
+            <column  name="email"  type="varchar(200)"/>
+            <column  name="telephone"  type="varchar(100)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet  id="create table post"  author="daniele">
+        <createTable  tableName="post">
+            <column  name="id"  type="int"  autoIncrement="true">
+                <constraints  primaryKey="true"  nullable="false"/>
+            </column>
+            <column  name="date" type="timestamp with time zone"/>
+            <column  name="title"  type="varchar(300)"/>
+            <column  name="link"  type="varchar(200)"/>
+            <column  name="content"  type="clob"/>
+        </createTable>
+    </changeSet>
+    <changeSet  id="create table image"  author="daniele">
+        <createTable  tableName="image">
+            <column  name="id"  type="int"  autoIncrement="true">
+                <constraints  primaryKey="true"  nullable="false"/>
+            </column>
+            <column  name="name"  type="varchar(200)"/>
+            <column  name="link"  type="varchar(200)"/>
+            <column  name="path"  type="varchar(200)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet  id="drop table images"  author="daniele">
+        <dropTable cascadeConstraints="true"
+                   tableName="images"/>
+    </changeSet>
+
+    <changeSet author="daniele" id="addColumn-page-parent">
+        <addColumn tableName="page">
+            <column name="parent"
+                    type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+
+<changeSet  author="liquibase-docs"  id="addDefaultValue-example">  
+    <addDefaultValue   
+            columnDataType="varchar(255)"  
+            columnName="parent"  
+            defaultValue=""      
+            tableName="page"/>  
+</changeSet>
+</databaseChangeLog>
