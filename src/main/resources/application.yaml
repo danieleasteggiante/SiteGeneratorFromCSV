@@ -6,9 +6,9 @@ spring:
       max-file-size: 10MB
       max-request-size: 10MB
   datasource:
-    url: jdbc:postgresql://localhost:5432/adr
-    password: 4DR_sTvD10!G
-    username: adruser
+    url: *******
+    password: *******
+    username: *******
     driverClassName: org.postgresql.Driver
   liquibase:
     enabled: true
@@ -26,8 +26,8 @@ spring:
       hibernate.cache.use_minimal_puts: false
   security:
     user:
-      name: adradmin
-      password: adrADM1N_
+      name: *******
+      password: *******
       roles: ADMIN, USER, MANAGER
   web:
     resources:
